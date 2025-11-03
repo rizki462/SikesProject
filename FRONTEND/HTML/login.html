@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - SIKes</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- My Css -->
+    <link rel="stylesheet" href="../CSS/style.css" />
+  </head>
+
+  <body>
+    <section id="LogoApp" class="h-100">
+      <div class="container-fluid h-100">
+        <div class="row h-100">
+          <!-- PANEL KIRI -->
+          <div class="col-md-6 left-panel position-relative">
+            <!-- Logo dan teks -->
+            <div class="container text-center mt-5">
+              <div class="row align-items-center justify-content-center">
+                <div class="col-auto">
+                  <img src="../IMG/Logo Sikes2.png" alt="Logo SiKes" class="logo" />
+                </div>
+                <div class="col-auto text-start">
+                  <h1 class="app-name mb-0">SIKes</h1>
+                  <p class="subtitle-atas mb-0">Sistem Informasi</p>
+                  <p class="subtitle-bawah mb-0">Kesehatan Digital</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Gambar Komputer -->
+            <div class="container text-center">
+              <img src="../IMG/Logo Komputer.png" alt="banner" class="banner" />
+            </div>
+
+            <!-- Footer -->
+            <div class="container text-start footer">© 2025 Sikes</div>
+          </div>
+
+          <!-- PANEL KANAN -->
+          <div class="col-md-6 right-panel d-flex flex-column align-items-center">
+            <!-- Logo kecil untuk mobile -->
+            <img src="../IMG/Logo Sikes2.png" alt="Logo SiKes" class="logo-mobile mb-3" />
+            <div class="login-box">
+              <h3>Masuk Ke SIKes</h3>
+
+              <form>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" placeholder="rizkikurnia@gmail.com" />
+                </div>
+
+                <div class="mb-4">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="********" />
+                </div>
+
+                <button type="submit" class="btn-login mb-3">Masuk</button>
+
+                <p class="text-start">
+                  Belum punya akun?
+                  <a href="#" class="text-link">Daftar sekarang</a>
+                </p>
+                <div class="footer-mobile">© 2025 Sikes</div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
