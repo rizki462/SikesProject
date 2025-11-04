@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 import * as Yup from "yup";
 
+// Model
+import UserModel from "../models/user.model";
+
 // Schema Register
 type TRegister = {
     fullname: string;
