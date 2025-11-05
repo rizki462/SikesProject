@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { encrypt } from "../utils/encryption";
 
 export interface User {
     fullname: string;
@@ -9,8 +10,6 @@ export interface User {
     profilePicture: string; // URL to profile picture
     isActive: boolean;
     activationCode: string;
-    createdAt: Date;
-    updatedAt: Date;
 }
 
 const Schema = mongoose.Schema;
@@ -24,9 +23,22 @@ const UserSchema = new Schema<User>({
     profilePicture: { type: String, default: 'user.jpg' }, // URL to profile picture
     isActive: { type: Boolean, default: false },
     activationCode: { type: Schema.Types.String },
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now }
+},
+{
+    timestamps: true
 });
+
+UserSchema.pre('save', function(next){
+    const user = this;
+    user.password = encrypt(user.password);
+    next();
+});
+
+UserSchema.methods.toJSON = function (){
+    const userObject = this.toObject();
+    delete userObject.password;
+    return userObject;
+}
 
 const UserModel = mongoose.model<User>('User', UserSchema);
 
