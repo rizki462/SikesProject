@@ -1,6 +1,12 @@
 import { Request, Response } from "express";
 import * as Yup from "yup";
 
+// Model
+import UserModel from "../models/user.model";
+import { encrypt } from "../utils/encryption";
+import { generateToken } from "../utils/jwt";
+import { IReqUser } from "../middlewares/auth.middleware";
+
 // Schema Register
 type TRegister = {
     fullname: string;
@@ -9,6 +15,13 @@ type TRegister = {
     password: string;
     confirmPassword: string;
 }
+
+// Schema Login
+type TLogin = {
+    identifier: string;
+    password: string;
+}
+
 
 const registerValidateSchema = Yup.object({
     fullname: Yup.string().required(),
@@ -24,11 +37,72 @@ export default {
 
         try {
             await registerValidateSchema.validate({ fullname, username, email, password, confirmPassword });
-            const resultData = { fullname, username, email};
-            res.status(200).json({ message: "Register Success", data: resultData });
+            const result = await UserModel.create({ fullname, username, email, password, role: 'user' });
+            res.status(200).json({ message: "Register Success", data: result });
         } catch (error) {
             const err = error as unknown as Error
             res.status(400).json({ message: err.message, data: null });
         }
-    }  
-} 
+    },
+
+    async login(req: Request, res: Response) {
+        const { identifier, password } = req.body as unknown as TLogin;
+
+        try {
+            // Ambil data user berdasarkan Identifier -> (email dan username)
+            const userByIdentifier = await UserModel.findOne({
+                $or: [
+                    { username: identifier },
+                    { email: identifier }
+                ]
+            })
+            // Validasi identifier user
+            if (!userByIdentifier) {
+                return res.status(400).json({
+                    message: "User tidak ditemukan",
+                    data: null
+                });
+            }
+
+            // Validasi password
+            const validatePassword: Boolean = encrypt(password) === userByIdentifier.password;
+            if (!validatePassword) {
+                return res.status(400).json({
+                    message: "Password salah",
+                    data: null
+                });
+            };
+
+            // Generate Token
+            const token = generateToken({
+                id: userByIdentifier._id,
+                role: userByIdentifier.role
+            })
+
+            // Response
+            res.status(200).json({
+                message: "Login Success",
+                data: token,
+            });
+
+        } catch (error) {
+            const err = error as unknown as Error
+            res.status(400).json({ message: err.message, data: null });
+        }
+    },
+
+    async me(req: IReqUser, res: Response) {
+        try {
+            const user = req.user;
+            const result = await UserModel.findById(user?.id);
+
+            res.status(200).json({
+                message: "Success get user profile", data: result
+            });
+
+        } catch (error) {
+            const err = error as unknown as Error
+            res.status(400).json({ message: err.message, data: null });
+        }
+    },
+};
