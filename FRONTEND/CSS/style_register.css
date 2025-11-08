@@ -3,6 +3,8 @@ body {
   height: 100vh;
   overflow: hidden;
 }
+
+/* PANEL KIRI */
 .left-panel {
   background: linear-gradient(150deg, #3adc6a 12%, #4a6bff 65%);
   color: white;
@@ -14,17 +16,20 @@ body {
   padding: 40px;
   position: relative;
 }
+
 .logo {
   width: 100px;
   opacity: 1;
   height: auto;
 }
+
 .app-name {
   margin-top: 5px;
   margin-right: 20px;
   font-size: 70px;
   font-weight: 600;
 }
+
 .subtitle-atas {
   margin-top: -8px;
   font-size: 20px;
@@ -35,18 +40,20 @@ body {
   font-size: 20px;
   opacity: 0.9;
 }
+
 .banner {
   width: 450px;
   height: auto;
   margin-top: 0;
 }
+
 .footer {
   font-size: 20px;
   opacity: 0.9;
   margin-top: auto;
 }
 
-/* CSS Kanan Login start */
+/* PANEL KANAN */
 .right-panel {
   display: flex;
   justify-content: left;
@@ -58,65 +65,67 @@ body {
   max-width: 360px;
 }
 
+/* LOGO & FOOTER MOBILE */
 .logo-mobile,
 .footer-mobile {
   display: none;
   width: 80px;
 }
 
+/* JUDUL FORM */
 .login-box h3 {
   font-weight: 750;
   margin-top: 20px;
-  margin-bottom: px;
+  margin-bottom: 5px;
 }
 
 .login-box h5 {
-  font-weight: 100;
+  font-weight: 300;
   margin-top: 1px;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
 }
 
+/* INPUT FIELD */
 .form-control {
   border-radius: 8px;
 }
+
+/* TOMBOL REGISTER */
 .btn-register {
-  background-color: #9eff99; /* warna redup saat nonaktif */
+  background-color: #9eff99;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
   color: #fff;
   font-weight: 600;
-  display: inline-block; /* penting agar tidak full lebar */
-  width: 45%; /* pastikan tidak 80% */
-  min-width: 120px; /* biar proporsional */
-  cursor: not-allowed; /* tunjukkan tombol belum bisa diklik */
+  display: inline-block;
+  width: 45%;
+  min-width: 120px;
+  cursor: not-allowed;
   opacity: 0.8;
-  transition: all 0.3s ease; /* animasi halus */
+  transition: all 0.3s ease;
 }
 
-/* Saat tombol aktif (checkbox disetujui) */
+/* Tombol aktif */
 .btn-register.active {
-  background-color: #6eff61; /* warna cerah */
+  background-color: #6eff61;
   cursor: pointer;
   opacity: 1;
 }
 
-/* Efek hover hanya saat aktif */
+/* Hover aktif */
 .btn-register.active:hover {
   background-color: #5fe85a;
 }
 
-.btn-login:hover {
-  background-color: #3455e4;
-}
-
-.masuk-link {
+.masuk {
   position: absolute;
-  left: 50%; /* geser ke kanan dari tombol */
+  left: 50%;
   top: 50%;
   transform: translateY(-50%);
-  white-space: nowrap; /* biar gak turun ke bawah */
+  white-space: nowrap;
 }
+
 .text-link {
   color: #4a6bff;
   text-decoration: none;
@@ -130,28 +139,109 @@ body {
 .dropdown-menu {
   background-color: #ffffff;
 }
-/* responsive */
+
+/* === TAMBAHAN UNTUK FIT DI MOBILE=== */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* hilangkan scroll horizontal */
+}
+
+/* Pastikan panel kanan selalu penuh tinggi layar */
+.right-panel {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Saat di mobile, sesuaikan agar tidak muncul ruang bawah */
 @media (max-width: 768px) {
+  .right-panel {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  html,
+  body {
+    height: 100%;
+    min-height: 100vh;
+  }
+
+  .right-panel {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 40px; /* ruang aman bawah */
+  }
+
+  .footer-mobile {
+    margin-bottom: 0;
+  }
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Tablet dan bawah */
+@media (max-width: 992px) {
+  .left-panel {
+    padding: 30px;
+  }
+
+  .app-name {
+    font-size: 55px;
+  }
+
+  .banner {
+    width: 350px;
+  }
+
+  .right-panel {
+    padding: 6vw;
+  }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  #LogoApp {
+    min-height: auto;
+    height: auto;
+    flex-direction: column;
+  }
+
   .left-panel {
     display: none;
   }
 
   .right-panel {
     background: linear-gradient(150deg, #3adc6a 12%, #4a6bff 65%);
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 
-  .form-label {
+  .form-label,
+  .text-start,
+  .login-box h3,
+  .login-box h5 {
     color: #ffffff;
+    text-align: center;
   }
 
-  .login-box h3 {
-    color: #ffffff;
-    justify-self: center;
+  .syarat {
+    color: #3adc6a !important;
   }
 
-  .text-start {
-    color: #ffffff;
-  }
   .text-link {
     font-weight: 500;
     font-style: italic;
@@ -162,13 +252,47 @@ body {
     display: block !important;
     margin: 0 auto 20px auto !important;
     width: 100px !important;
-    align-self: center !important;
   }
 
   .footer-mobile {
-    margin-top: 12rem;
+    margin-top: 1rem;
     color: #ffffff;
     display: inline-flex;
     white-space: nowrap;
+  }
+
+  body {
+    overflow-y: auto;
+  }
+}
+
+/* HP kecil (≤576px) */
+@media (max-width: 576px) {
+  .login-box {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .masuk {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 20px;
+  }
+
+  .masuk-link {
+    display: flex !important;
+  }
+
+  .login-box h3,
+  .login-box h5 {
+    text-align: center;
+  }
+
+  .footer-mobile {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
   }
 }

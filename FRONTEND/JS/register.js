@@ -14,16 +14,26 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === FLATPICKR TANGGAL LAHIR ===
-  const picker = flatpickr("#tanggal_lahir", {
-    dateFormat: "Y-m-d",
-    maxDate: "today",
-    allowInput: false,
-    onChange: checkFormCompletion,
-  });
-
+  // === FLATPICKR TANGGAL LAHIR ===
+  const tanggalInput = document.getElementById("tanggal_lahir");
   const btnTanggal = document.getElementById("btnTanggal");
-  if (btnTanggal) {
-    btnTanggal.addEventListener("click", () => picker.open());
+
+  if (tanggalInput && typeof flatpickr === "function") {
+    // reset value supaya mobile tidak menimpa
+    tanggalInput.value = "";
+
+    const picker = flatpickr(tanggalInput, {
+      dateFormat: "Y-m-d", // YYYY-MM-DD
+      maxDate: "today",
+      allowInput: false,
+      appendTo: document.body, // popup muncul di luar container
+      onChange: checkFormCompletion,
+    });
+
+    if (btnTanggal) {
+      btnTanggal.addEventListener("click", () => picker.open());
+      btnTanggal.addEventListener("touchstart", () => picker.open()); // support mobile
+    }
   }
 
   // === CEKBOX DAN INPUT UNTUK AKTIFKAN TOMBOL DAFTAR ===
