@@ -1,6 +1,7 @@
 import express from "express";
 import router from "./routers/api";
 import { PORT } from "./utils/env";
+import cors from "cors";
 
 import db from "./utils/database";
 
@@ -10,6 +11,8 @@ async function init() {
         console.log(`Database Status : ${result}`);
 
         const app = express();
+
+        app.use(cors());
 
         app.use(express.json());
         app.use('/api', router);

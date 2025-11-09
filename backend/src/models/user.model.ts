@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import { encrypt } from "../utils/encryption";
 
 export interface User {
-    fullname: string;
     username: string;
     email: string;
     password: string;
@@ -15,7 +14,6 @@ export interface User {
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema<User>({
-    fullname: { type: String, required: true },
     username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
