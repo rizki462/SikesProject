@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // === FLATPICKR TANGGAL LAHIR ===
-  // === FLATPICKR TANGGAL LAHIR ===
   const tanggalInput = document.getElementById("tanggal_lahir");
   const btnTanggal = document.getElementById("btnTanggal");
 

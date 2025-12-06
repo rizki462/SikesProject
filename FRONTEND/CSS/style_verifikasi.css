@@ -3,8 +3,6 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-
-/* PANEL KIRI */
 .left-panel {
   background: linear-gradient(150deg, #3adc6a 12%, #4a6bff 65%);
   color: white;
@@ -16,20 +14,17 @@ body {
   padding: 40px;
   position: relative;
 }
-
 .logo {
   width: 100px;
   opacity: 1;
   height: auto;
 }
-
 .app-name {
   margin-top: 5px;
   margin-right: 20px;
   font-size: 70px;
   font-weight: 600;
 }
-
 .subtitle-atas {
   margin-top: -8px;
   font-size: 20px;
@@ -40,104 +35,74 @@ body {
   font-size: 20px;
   opacity: 0.9;
 }
-
 .banner {
-  width: 450px;
+  width: 100%;
+  max-width: 450px;
   height: auto;
   margin-top: 0;
+  object-fit: contain;
 }
-
 .footer {
   font-size: 20px;
   opacity: 0.9;
   margin-top: auto;
 }
 
-/* PANEL KANAN */
+/* CSS Kanan Login start */
 .right-panel {
   display: flex;
   justify-content: left;
   background-color: #fff;
   padding: 60px;
 }
-.login-box {
+.verifikasi-box {
   width: 100%;
-  max-width: 360px;
+  max-width: 450px;
 }
 
-/* LOGO & FOOTER MOBILE */
 .logo-mobile,
 .footer-mobile {
   display: none;
   width: 80px;
 }
 
-/* JUDUL FORM */
-.login-box h3 {
-  font-weight: 750;
+.verifikasi-box h3 {
+  font-weight: 700;
   margin-top: 20px;
-  margin-bottom: 5px;
 }
 
-.login-box h5 {
-  font-weight: 300;
-  margin-top: 1px;
-  margin-bottom: 60px;
+.verifikasi-box h4 {
+  font-weight: 200;
+  margin-top: 2px;
+  margin-bottom: 70px;
+  line-height: 40px;
 }
 
-/* INPUT FIELD */
+.ilustrasi {
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+  margin-top: 0;
+  margin-bottom: 30px;
+  object-fit: contain;
+}
+
 .form-control {
   border-radius: 8px;
 }
 
-/* TOMBOL REGISTER */
-.btn-register {
-  background-color: #9eff99;
+.btn-verifikasi {
+  background-color: #4a6bff;
   border: none;
   border-radius: 8px;
-  padding: 10px 20px;
+  width: 100%;
+  padding: 10px;
   color: #fff;
   font-weight: 600;
-  display: inline-block;
-  width: 45%;
-  min-width: 120px;
-  cursor: not-allowed;
-  opacity: 0.8;
-  transition: all 0.3s ease;
 }
 
-/* Tombol aktif */
-.btn-register.active {
-  background-color: #6eff61;
-  cursor: pointer;
-  opacity: 1;
-}
-
-/* Hover aktif */
-.btn-register.active:hover {
-  background-color: #5fe85a;
-}
-
-.masuk {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  white-space: nowrap;
-}
-
-.text-link {
-  color: #4a6bff;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.text-link:hover {
-  text-decoration: underline;
-}
-
-.dropdown-menu {
-  background-color: #ffffff;
+.btn-verifikasi:hover {
+  background-color: #3455e4;
 }
 
 /* === TAMBAHAN UNTUK FIT DI MOBILE=== */
@@ -170,7 +135,6 @@ body {
     flex-direction: column;
   }
 }
-
 @media (max-width: 576px) {
   html,
   body {
@@ -293,6 +257,30 @@ body {
   .footer-mobile {
     display: block;
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 180px;
+  }
+  .verifikasi-box h3 {
+    font-weight: 700;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .verifikasi-box h4 {
+    font-weight: 200;
+    margin-top: 2px;
+    margin-bottom: 70px;
+    line-height: 40px;
+    text-align: center;
+  }
+
+  .btn-verifikasi {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    padding: 10px;
+    color: #4a6bff;
+    font-weight: 600;
+    margin-top: 50px;
   }
 }
