@@ -43,11 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // fungsi cek semua input + checkbox
   function checkFormCompletion() {
     const allFilled = inputs.every((input) => input.value.trim() !== "");
+
     if (allFilled && checkbox.checked) {
       btnDaftar.disabled = false;
-      btnDaftar.classList.add("active"); // bisa di CSS beri warna terang
+      btnDaftar.removeAttribute("disabled"); // ← WAJIB
+      btnDaftar.classList.add("active");
     } else {
       btnDaftar.disabled = true;
+      btnDaftar.setAttribute("disabled", true); // ← WAJIB
       btnDaftar.classList.remove("active");
     }
   }
@@ -81,5 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(err => console.error("Error:", err));
     */
+
+    // Setelah data dikirim → langsung pindah
+    window.location.href = "verifikasi.html";
   });
 });
