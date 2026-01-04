@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIKes Dashboard</title>
+
+    <!-- Logo di tab browser -->
+    <link rel="icon" type="image/png" href="../IMG/Logo Sikes2.png" />
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/style_dashboard.css" />
+  </head>
+  <body>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="../IMG/Logo Sikes2.png" alt="Logo SiKes" class="logoimg" />
+        <span>SIKes</span>
+      </div>
+
+      <nav class="menu">
+        <a href="#" class="active"><i class="fa-solid fa-house"></i> Dashboard</a>
+        <a href="#"><i class="fa-solid fa-comments"></i> Konsultasi</a>
+        <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Konsultasi</a>
+        <a href="#"><i class="fa-solid fa-gear"></i> Pengaturan Akun</a>
+        <a href="#" id="logout"><i class="fa-solid fa-right-from-bracket"></i> Keluar</a>
+      </nav>
+    </aside>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="topbar">
+        <button class="hamburger" id="hamburger" aria-label="button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <h1>Dashboard</h1>
+        <div class="user">
+          <i class="fa-solid fa-user"></i>
+          <span class="nama_pengguna">Rizki Kurnia</span>
+        </div>
+      </div>
+
+      <section class="cards">
+        <div class="card">
+          <h3>Status Kesehatan Terbaru</h3>
+          <p>Belum ada data kesehatan terbaru.</p>
+        </div>
+
+        <div class="card">
+          <h3>Riwayat Konsultasi Terakhir</h3>
+          <p>Tidak ada konsultasi terakhir.</p>
+        </div>
+
+        <div class="card">
+          <h3>Rekomendasi Dokter</h3>
+          <p>Belum ada rekomendasi dokter.</p>
+        </div>
+
+        <div class="card">
+          <h3>Pesan Dokter</h3>
+          <p>Tidak ada pesan masuk.</p>
+        </div>
+      </section>
+
+      <footer>© 2025 Sikes – Sistem Informasi Kesehatan</footer>
+    </main>
+
+    <!-- JS -->
+    <script src="../JS/dashboard.js"></script>
+  </body>
+</html>
