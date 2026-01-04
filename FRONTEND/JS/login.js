@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((err) => console.error("Error:", err));
     */
+    window.location.href = "verifikasi.html";
   });
 
   // === PINDAH KE HALAMAN REGISTER ===
