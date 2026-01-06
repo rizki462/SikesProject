@@ -106,6 +106,28 @@ body {
   transition: all 0.3s ease;
 }
 
+.input-icon {
+  position: relative;
+}
+
+.input-icon input {
+  padding-right: 45px; /* ruang icon */
+}
+
+.icon-right {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.icon-right:hover {
+  color: #4f7cff;
+}
+
 /* Tombol aktif */
 .btn-register.active {
   background-color: #6eff61;

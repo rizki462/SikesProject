@@ -16,6 +16,9 @@
 
     <!-- My Css -->
     <link rel="stylesheet" href="../CSS/style_login.css" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   </head>
 
   <body>
@@ -58,9 +61,16 @@
                   <label for="email" class="form-label">Email</label>
                   <input type="email" class="form-control" id="email" placeholder="rizkikurnia@gmail.com" required />
                 </div>
+
                 <div class="mb-4">
                   <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="password" placeholder="********" required />
+
+                  <div class="input-icon">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required />
+                    <span class="icon-right" id="togglePassword">
+                      <i class="fa-solid fa-eye"></i>
+                    </span>
+                  </div>
                 </div>
 
                 <button type="submit" class="btn-login mb-3" id="btnMasuk">Masuk</button>

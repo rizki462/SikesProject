@@ -95,6 +95,28 @@ body {
   text-decoration: underline;
 }
 
+.input-icon {
+  position: relative;
+}
+
+.input-icon input {
+  padding-right: 45px; /* ruang icon */
+}
+
+.icon-right {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.icon-right:hover {
+  color: #4f7cff;
+}
+
 /* responsive */
 @media (max-width: 768px) {
   .left-panel {

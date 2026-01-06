@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === DROPDOWN JENIS KELAMIN ===
+  // =============================
+  // DROPDOWN JENIS KELAMIN
+  // =============================
   const dropdownButton = document.querySelector("#dropdownJenisKelamin");
   const dropdownItems = document.querySelectorAll(".dropdown-item");
   const inputHidden = document.querySelector("#jenis_kelamin");
@@ -13,79 +15,86 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === FLATPICKR TANGGAL LAHIR ===
+  // =============================
+  // FLATPICKR TANGGAL LAHIR
+  // =============================
   const tanggalInput = document.getElementById("tanggal_lahir");
   const btnTanggal = document.getElementById("btnTanggal");
 
   if (tanggalInput && typeof flatpickr === "function") {
-    // reset value supaya mobile tidak menimpa
     tanggalInput.value = "";
 
     const picker = flatpickr(tanggalInput, {
-      dateFormat: "Y-m-d", // YYYY-MM-DD
+      dateFormat: "Y-m-d",
       maxDate: "today",
       allowInput: false,
-      appendTo: document.body, // popup muncul di luar container
+      appendTo: document.body,
       onChange: checkFormCompletion,
     });
 
     if (btnTanggal) {
       btnTanggal.addEventListener("click", () => picker.open());
-      btnTanggal.addEventListener("touchstart", () => picker.open()); // support mobile
+      btnTanggal.addEventListener("touchstart", () => picker.open());
     }
   }
 
-  // === CEKBOX DAN INPUT UNTUK AKTIFKAN TOMBOL DAFTAR ===
+  // =============================
+  // INPUT & CHECKBOX
+  // =============================
   const checkbox = document.getElementById("setuju");
   const btnDaftar = document.querySelector(".btn-register");
-  const inputs = ["nama_pengguna", "jenis_kelamin", "tanggal_lahir", "email", "password", "repeat_password"].map((id) => document.getElementById(id));
+  const inputs = ["nama_pengguna", "jenis_kelamin", "tanggal_lahir", "email", "password", "repeatPassword"].map((id) => document.getElementById(id));
 
-  // fungsi cek semua input + checkbox
   function checkFormCompletion() {
-    const allFilled = inputs.every((input) => input.value.trim() !== "");
+    const allFilled = inputs.every((input) => input && input.value.trim() !== "");
 
     if (allFilled && checkbox.checked) {
       btnDaftar.disabled = false;
-      btnDaftar.removeAttribute("disabled"); // ← WAJIB
       btnDaftar.classList.add("active");
     } else {
       btnDaftar.disabled = true;
-      btnDaftar.setAttribute("disabled", true); // ← WAJIB
       btnDaftar.classList.remove("active");
     }
   }
 
-  // pasang event listener ke semua input & checkbox
-  inputs.forEach((input) => input.addEventListener("input", checkFormCompletion));
+  inputs.forEach((input) => input && input.addEventListener("input", checkFormCompletion));
   checkbox.addEventListener("change", checkFormCompletion);
 
-  // === FUNGSI KIRIM FORM ===
+  // =============================
+  // TOGGLE PASSWORD (SINKRON)
+  // =============================
+  const password = document.getElementById("password");
+  const repeatPassword = document.getElementById("repeatPassword");
+  const toggleIcons = document.querySelectorAll(".toggle-password");
+
+  let isVisible = false;
+
+  toggleIcons.forEach((toggle) => {
+    toggle.addEventListener("click", () => {
+      isVisible = !isVisible;
+
+      password.type = isVisible ? "text" : "password";
+      repeatPassword.type = isVisible ? "text" : "password";
+
+      toggleIcons.forEach((el) => {
+        const icon = el.querySelector("i");
+        icon.classList.toggle("fa-eye", !isVisible);
+        icon.classList.toggle("fa-eye-slash", isVisible);
+      });
+    });
+  });
+
+  // =============================
+  // SUBMIT FORM
+  // =============================
   const form = document.querySelector("form");
   form.addEventListener("submit", (e) => {
-    e.preventDefault(); // mencegah reload halaman
+    e.preventDefault();
 
-    // Ambil semua nilai dari input
     const data = {};
     inputs.forEach((input) => (data[input.id] = input.value));
 
     console.log("Data yang dikirim:", data);
-
-    // Contoh kirim ke server (aktifkan jika backend siap)
-    /*
-    fetch("https://alamat-api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then(res => res.json())
-      .then(response => {
-        console.log("Respon server:", response);
-        alert("Pendaftaran berhasil!");
-      })
-      .catch(err => console.error("Error:", err));
-    */
-
-    // Setelah data dikirim → langsung pindah
     window.location.href = "verifikasi.html";
   });
 });

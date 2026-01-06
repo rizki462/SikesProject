@@ -34,6 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "verifikasi.html";
   });
 
+  const togglePassword = document.getElementById("togglePassword");
+  const passwordInput = document.getElementById("password");
+  const icon = togglePassword.querySelector("i");
+
+  togglePassword.addEventListener("click", () => {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+      passwordInput.type = "password";
+      icon.classList.replace("fa-eye-slash", "fa-eye");
+    }
+  });
+
   // === PINDAH KE HALAMAN REGISTER ===
   linkDaftar.addEventListener("click", (e) => {
     e.preventDefault(); // Supaya tidak reload
